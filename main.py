@@ -84,12 +84,12 @@ if __name__ == "__main__":
     # -- Input Frame --
     input_frame = tk.Frame(root)
     input_frame.pack(pady=10, padx=10, fill=tk.X)
+    add_button = tk.Button(input_frame, text="Add Task", command=on_add_task_button_click, font=button_font) 
+    add_button.pack(side=tk.RIGHT, padx=(5, 0)) 
     instruction_label = tk.Label(input_frame, text="New Task:", font=label_font)
     instruction_label.pack(side=tk.LEFT, padx=(0, 5))
-    task_entry = tk.Entry(input_frame, width=40, font=app_font) 
-    task_entry.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=5)
-    add_button = tk.Button(input_frame, text="Add Task", command=on_add_task_button_click, font=button_font)
-    add_button.pack(side=tk.LEFT, padx=(5, 0))
+    task_entry = tk.Entry(input_frame, font=app_font) 
+    task_entry.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=5) 
 
     # -- List Frame --
     list_area_frame = tk.Frame(root) 
