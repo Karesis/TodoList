@@ -22,25 +22,30 @@ class Task:
                     "timestamp": self.timestamp.isoformat(),
                     "done": self.done}
         return task_dir
+    def render(self) -> str:
+        if self.done:
+            done_symble = "*"
+        else:
+            done_symble = "O"
+
+        return self.content + f" {done_symble}"
 
     def __repr__(self) -> str:
         status = "Done" if self.done else "Pending"
         return (f"Task(content='{self.content}', "
-                "timestamp='{self.timestamp.isoformat()}', "
-                "status='{status}')")
+                f"timestamp='{self.timestamp.isoformat()}', "
+                f"status='{status}')")
 
 class TaskList:
-    def __init__(self, user: str) -> None:
-        self.user: str = user
+    def __init__(self, file_name: str) -> None:
         self.list: List[Task] = []
-        self.file_name: str = f".tasklist.{user}.json"
+        self.file_name: str = file_name
 
     def load(self) -> None: 
         self.list.clear()
-        file_name: str = self.file_name
 
         try:
-            with open(file_name, "r", encoding="utf-8") as f:
+            with open(self.file_name, "r", encoding="utf-8") as f:
                 list_of_dicts = json.load(f)
 
             for dict_task in list_of_dicts:
@@ -64,31 +69,30 @@ class TaskList:
                 self.list.append(task)
 
         except FileNotFoundError:
-            print(f"Info: File '{file_name}' not found. Starting with an empty task list.")
+            print(f"Info: File '{self.file_name}' not found. Starting with an empty task list.")
         
         except json.JSONDecodeError:
-            print(f"Warning: File '{file_name}' is empty or contains invalid JSON. "
+            print(f"Warning: File '{self.file_name}' is empty or contains invalid JSON. "
                    "Starting with an empty task list.")
 
         except Exception as e:
-            print(f"An unexpected error occurred while reading '{file_name}': {e}")
+            print(f"An unexpected error occurred while reading '{self.file_name}': {e}")
 
 
     def save(self) -> None:
         task_list_to_save: List[Task] = self.list
-        file_name: str = self.file_name
 
         try:
             list_of_dicts: List[Dict] = [task.to_dict() for task in task_list_to_save]
 
-            with open(file_name, "w", encoding="utf-8") as f:
+            with open(self.file_name, "w", encoding="utf-8") as f:
                 json.dump(list_of_dicts, f, indent=4)
 
         except IOError as e:
-            print(f"Error: Could not write to file '{file_name}': {e}")
+            print(f"Error: Could not write to file '{self.file_name}': {e}")
         
         except Exception as e:
-            print(f"An unexpected error occurred while writing to '{file_name}': {e}")
+            print(f"An unexpected error occurred while writing to '{self.file_name}': {e}")
 
     def add(self, task_description: str) -> None:
         add_task: Task = Task(task_description)
@@ -118,11 +122,11 @@ class TaskList:
              print(f"Error: Invalid index {task_index}.")
 
     def __repr__(self) -> str:
-        if not self.tasks:
-            return f"--- TodoList for {self.user} (is empty) ---"
-        render = f"--- TodoList for {self.user} ---\n"
+        if not self.list:
+            return "--- TodoList (is empty) ---"
+        render = f"--- TodoList ---\n"
         
-        for i, task in enumerate(self.list):
-            render += f"{i + 1}: {task}\n"
+        for i, tas_item in enumerate(self.list):
+            render += f"{i + 1}: {task_item.render()}\n"
             
         return render
