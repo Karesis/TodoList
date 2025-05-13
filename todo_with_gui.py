@@ -4,7 +4,7 @@ import tkinter.font as tkFont
 from task import Task, TaskList 
 
 # -- Global Variables --
-TASKS_DATA_FILE = ".todolist_gui_data.json" 
+TASKS_DATA_FILE = ".todolist_data.json" 
 task_list_manager = TaskList(TASKS_DATA_FILE)
 
 # -- Functions --
