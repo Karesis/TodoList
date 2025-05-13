@@ -29,53 +29,100 @@ class Task:
                 "timestamp='{self.timestamp.isoformat()}', "
                 "status='{status}')")
 
-def read_list(file_name: str) -> List[Task]:
-    tasks_from_file: List[Task] = []
-    try:
-        with open(file_name, "r", encoding="utf-8") as f:
-            list_of_dicts = json.load(f)
+class TaskList:
+    def __init__(self, user: str) -> None:
+        self.user: str = user
+        self.list: List[Task] = []
+        self.file_name: str = f".tasklist.{user}.json"
 
-        for dict_task in list_of_dicts:
-            timestamp_str = dict_task.get('timestamp')
-            converted_timestamp: Optional[datetime] = None
+    def load(self) -> None: 
+        self.list.clear()
+        file_name: str = self.file_name
 
-            if timestamp_str:
-                try:
-                    converted_timestamp = datetime.fromisoformat(timestamp_str)
-                except ValueError:
-                    print(f"Warning: "
-                           "Invalid timestamp format '{timestamp_str}' "
-                           "for task '{dict_task.get('content')}'. "
-                           "Using current time as fallback.")
-                    converted_timestamp = datetime.now() 
+        try:
+            with open(file_name, "r", encoding="utf-8") as f:
+                list_of_dicts = json.load(f)
 
-            task = Task(task_description = dict_task.get('content', 'Missing description'),
-                        timestamp = converted_timestamp, 
-                        done = dict_task.get('done', False))
+            for dict_task in list_of_dicts:
+                timestamp_str = dict_task.get('timestamp')
+                converted_timestamp: Optional[datetime] = None
 
-            tasks_from_file.append(task)
+                if timestamp_str:
+                    try:
+                        converted_timestamp = datetime.fromisoformat(timestamp_str)
+                    except ValueError:
+                        print(f"Warning: "
+                               "Invalid timestamp format '{timestamp_str}' "
+                               "for task '{dict_task.get('content')}'. "
+                               "Using current time as fallback.")
+                        converted_timestamp = datetime.now() 
 
-    except FileNotFoundError:
-        print(f"Info: File '{file_name}' not found. Starting with an empty task list.")
-    
-    except json.JSONDecodeError:
-        print(f"Warning: File '{file_name}' is empty or contains invalid JSON. "
-               "Starting with an empty task list.")
+                task = Task(task_description = dict_task.get('content', 'Missing description'),
+                            timestamp = converted_timestamp, 
+                            done = dict_task.get('done', False))
 
-    except Exception as e:
-        print(f"An unexpected error occurred while reading '{file_name}': {e}")
+                self.list.append(task)
 
-    return tasks_from_file
+        except FileNotFoundError:
+            print(f"Info: File '{file_name}' not found. Starting with an empty task list.")
+        
+        except json.JSONDecodeError:
+            print(f"Warning: File '{file_name}' is empty or contains invalid JSON. "
+                   "Starting with an empty task list.")
 
-def write_list(file_name: str, task_list_to_save: List[Task]) -> None:
-    try:
-        list_of_dicts: List[Dict] = [task.to_dict() for task in task_list_to_save]
+        except Exception as e:
+            print(f"An unexpected error occurred while reading '{file_name}': {e}")
 
-        with open(file_name, "w", encoding="utf-8") as f:
-            json.dump(list_of_dicts, f, indent=4)
 
-    except IOError as e:
-        print(f"Error: Could not write to file '{file_name}': {e}")
-    
-    except Exception as e:
-        print(f"An unexpected error occurred while writing to '{file_name}': {e}")
+    def save(self) -> None:
+        task_list_to_save: List[Task] = self.list
+        file_name: str = self.file_name
+
+        try:
+            list_of_dicts: List[Dict] = [task.to_dict() for task in task_list_to_save]
+
+            with open(file_name, "w", encoding="utf-8") as f:
+                json.dump(list_of_dicts, f, indent=4)
+
+        except IOError as e:
+            print(f"Error: Could not write to file '{file_name}': {e}")
+        
+        except Exception as e:
+            print(f"An unexpected error occurred while writing to '{file_name}': {e}")
+
+    def add(self, task_description: str) -> None:
+        add_task: Task = Task(task_description)
+        self.list.append(add_task)
+
+    def delete(self, task_index: int) -> None:
+        task_index -= 1
+
+        try:
+            removed_task = self.list.pop(task_index) 
+            print(f"Deleted task: {removed_task.content}")
+
+        except IndexError:
+             print(f"Error: Invalid index {task_index}.")
+
+    def done(self, task_index: int) -> None:
+        task_index -= 1
+
+        try:
+            if not self.list[task_index].done:
+                self.list[task_index].done = True
+                print(f"Completed task: {self.list[task_index].content}")
+            else:
+                print(f"Task '{self.list[task_index].content}' was already marked as done.")
+
+        except IndexError:
+             print(f"Error: Invalid index {task_index}.")
+
+    def __repr__(self) -> str:
+        if not self.tasks:
+            return f"--- TodoList for {self.user} (is empty) ---"
+        render = f"--- TodoList for {self.user} ---\n"
+        
+        for i, task in enumerate(self.list):
+            render += f"{i + 1}: {task}\n"
+            
+        return render
