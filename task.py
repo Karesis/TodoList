@@ -99,8 +99,6 @@ class TaskList:
         self.list.append(add_task)
 
     def delete(self, task_index: int) -> None:
-        task_index -= 1
-
         try:
             removed_task = self.list.pop(task_index) 
             print(f"Deleted task: {removed_task.content}")
@@ -108,25 +106,22 @@ class TaskList:
         except IndexError:
              print(f"Error: Invalid index {task_index}.")
 
-    def done(self, task_index: int) -> None:
-        task_index -= 1
-
+    def change_status(self, task_index: int) -> None:
         try:
-            if not self.list[task_index].done:
-                self.list[task_index].done = True
-                print(f"Completed task: {self.list[task_index].content}")
-            else:
-                print(f"Task '{self.list[task_index].content}' was already marked as done.")
-
+            task_to_toggle = self.list[task_index] 
+            task_to_toggle.done = not task_to_toggle.done 
+            status_text = "completed" if task_to_toggle.done else "pending"
+            print(f"Task '{task_to_toggle.content}' status changed to {status_text}.")
+            
         except IndexError:
-             print(f"Error: Invalid index {task_index}.")
+            print(f"Error in TaskList.done: Invalid task index {task_index}.")
 
     def __repr__(self) -> str:
         if not self.list:
             return "--- TodoList (is empty) ---"
         render = f"--- TodoList ---\n"
         
-        for i, tas_item in enumerate(self.list):
+        for i, task_item in enumerate(self.list):
             render += f"{i + 1}: {task_item.render()}\n"
             
         return render
