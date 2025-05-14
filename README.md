@@ -80,42 +80,41 @@ This project has been refactored with the following principles in mind:
 
 ````
 
-time\_management\_app/
-├── resources/
-└── src/
-├── **init**.py
-├── core/
-│   ├── **init**.py
-│   ├── data\_service\_manager.py
-│   ├── goal\_manager.py
-│   ├── note\_manager.py
-│   ├── project\_manager.py
-│   ├── reminder\_manager.py
-│   ├── schedule\_manager.py
-│   └── task\_manager.py
-├── database/
-│   ├── **init**.py
-│   ├── database\_setup.py
-│   ├── db\_operations.py
-│   └── schema.sql
-├── main.py
-└── ui/
-├── **init**.py
-├── dialogs/
-├── main\_window.py
-├── navigation\_config.py
-├── styles/
-│   ├── dark.qss
-│   └── light.qss
-├── views/
-│   ├── goal\_view.py
-│   ├── note\_view.py
-│   ├── project\_view.py
-│   ├── reminder\_view.py
-│   ├── schedule\_view.py
-│   ├── settings\_view.py
-│   └── task\_view.py
-└── widgets/
+.
+├── LICENSE
+├── README.md
+└── src
+    ├── __init__.py
+    ├── core
+    │   ├── __init__.py
+    │   ├── data_service_manager.py
+    │   ├── goal_manager.py
+    │   ├── note_manager.py
+    │   ├── project_manager.py
+    │   ├── reminder_manager.py
+    │   ├── schedule_manager.py
+    │   └── task_manager.py
+    ├── database
+    │   ├── __init__.py
+    │   ├── database_setup.py
+    │   ├── db_operations.py
+    │   └── schema.sql
+    ├── main.py
+    └── ui
+        ├── __init__.py
+        ├── main_window.py
+        ├── navigation_config.py
+        ├── styles
+        │   ├── dark.qss
+        │   └── light.qss
+        └── views
+            ├── goal_view.py
+            ├── note_view.py
+            ├── project_view.py
+            ├── reminder_view.py
+            ├── schedule_view.py
+            ├── settings_view.py
+            └── task_view.py
 
 ````
 
