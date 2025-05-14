@@ -1,7 +1,7 @@
 # src/ui/views/goal_view.py
 import sqlite3
 from datetime import datetime
-from typing import List, Optional, Dict, Any, cast
+from typing import List, Optional, Dict, Any, cast, Final
 
 from PyQt6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QLabel, QPushButton,
@@ -12,8 +12,8 @@ from PyQt6.QtWidgets import (
 from PyQt6.QtCore import Qt, QDate
 from PyQt6.QtGui import QFont
 
-from ...core import GoalManager # Using __init__.py for core imports
-from ...core.goal_manager import GoalData # Import TypedDict
+from core import GoalManager # Using __init__.py for core imports
+from core.goal_manager import GoalData # Import TypedDict
 
 # Using constants from GoalManager if they were made available, 
 # or redefine UI-specific mappings if necessary and keep them aligned.

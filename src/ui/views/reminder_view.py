@@ -10,8 +10,8 @@ from PyQt6.QtWidgets import (
 from PyQt6.QtCore import Qt, QDateTime
 from PyQt6.QtGui import QFont
 
-from ...core import ReminderManager, TaskManager, ScheduleManager
-from ...core.reminder_manager import ReminderData
+from core import ReminderManager, TaskManager, ScheduleManager
+from core.reminder_manager import ReminderData
 # Assuming TaskData and EventData will be available from their respective managers
 # from ...core.task_manager import TaskData
 # from ...core.schedule_manager import EventData

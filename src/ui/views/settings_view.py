@@ -6,7 +6,7 @@ from PyQt6.QtGui import QFont
 
 # For type hinting MainWindow to avoid circular import issues at runtime
 if TYPE_CHECKING:
-    from ..main_window import MainWindow
+    from main_window import MainWindow
 
 
 class SettingsView(QWidget):

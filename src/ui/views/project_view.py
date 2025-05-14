@@ -12,8 +12,8 @@ from PyQt6.QtWidgets import (
 from PyQt6.QtCore import Qt, QDateTime
 from PyQt6.QtGui import QFont
 
-from ...core import ProjectManager, TaskManager
-from ...core.project_manager import ProjectData
+from core import ProjectManager, TaskManager
+from core.project_manager import ProjectData
 # Placeholder for TaskData, assuming it will be defined in task_manager.py
 # and imported like: from ...core.task_manager import TaskData
 _TaskDataPlaceholder = Dict[str, Any] # Using this until TaskData is formally available

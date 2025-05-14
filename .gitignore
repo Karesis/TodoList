@@ -1,0 +1,74 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environments
+.env
+.venv/
+env/
+venv/
+ENV/
+VENV/
+
+# IDE / Editor specific files
+.vscode/
+.idea/
+*.project
+*.pydevproject
+*.sublime-workspace
+*.sublime-project
+*.tmPreferences
+
+# SQLite database file from this project
+# This ensures your local database instance is not committed.
+# If you have a template/empty DB for distribution, manage it separately.
+src/database/app_data/timemanager.db
+
+# OS-generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Build artifacts and distribution files
+build/
+dist/
+*.egg-info/
+*.tar.gz
+*.zip
+*.wheel
+*.exe
+*.msi
+*.dmg
+*.deb
+*.rpm
+*.manifest
+*.spec
+
+# Test output & coverage reports
+.pytest_cache/
+.tox/
+.coverage
+.coverage.*
+htmlcov/
+nosetests.xml
+coverage.xml
+*.prof
+*.lprof
+*.cprof
+
+# Log files
+*.log
+logs/
+
+# IPython Notebook checkpoints
+.ipynb_checkpoints
+
+# dotenv environment variable files
+.env.*
+!.env.example

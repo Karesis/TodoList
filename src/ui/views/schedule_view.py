@@ -12,8 +12,8 @@ from PyQt6.QtWidgets import (
 from PyQt6.QtCore import Qt, QDate, QDateTime, QTime
 from PyQt6.QtGui import QFont
 
-from ...core import ScheduleManager
-from ...core.schedule_manager import EventData # Import TypedDict
+from core import ScheduleManager
+from core.schedule_manager import EventData # Import TypedDict
 
 _SENTINEL = object()
 

@@ -3,8 +3,8 @@ import sqlite3
 from datetime import datetime
 from typing import List, Optional, Dict, Any, TypedDict, Final, Set, Literal, Tuple, Union
 
-from ..database import db_operations
-from ..database.database_setup import get_db_connection
+from database import db_operations
+from database.database_setup import get_db_connection
 
 _SENTINEL = object()
 

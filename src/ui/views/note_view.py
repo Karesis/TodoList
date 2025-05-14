@@ -11,8 +11,8 @@ from PyQt6.QtWidgets import (
 from PyQt6.QtCore import Qt, QDateTime # QDateTime for parsing ISO strings
 from PyQt6.QtGui import QFont
 
-from ...core import NoteManager # Use __init__.py for core imports
-from ...core.note_manager import NoteData # Import TypedDict
+from core import NoteManager # Use __init__.py for core imports
+from core.note_manager import NoteData # Import TypedDict
 
 # Sentinel for distinguishing "not provided" from "None" in updates
 _SENTINEL = object()

@@ -6,8 +6,8 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, List, Optional, Dict, Literal, Final, Set
 
-from ..database import db_operations
-from ..database.database_setup import get_db_connection, DATABASE_PATH
+from database import db_operations
+from database.database_setup import get_db_connection, DATABASE_PATH
 
 _ALLOWED_TABLE_OPERATIONS: Final[Set[str]] = {
     "tasks", "projects", "events", "goals", "notes", "tags",

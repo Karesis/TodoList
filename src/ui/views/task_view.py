@@ -12,8 +12,8 @@ from PyQt6.QtWidgets import (
 from PyQt6.QtCore import Qt, QDateTime
 from PyQt6.QtGui import QFont
 
-from ...core import TaskManager
-from ...core.task_manager import TaskData, _VALID_TASK_STATUSES, _VALID_TASK_PRIORITIES
+from core import TaskManager
+from core.task_manager import TaskData, _VALID_TASK_STATUSES, _VALID_TASK_PRIORITIES
 
 _SENTINEL = object()
 
