@@ -1,0 +1,166 @@
+/* src/ui/styles/dark.qss - Dark Theme */
+
+QWidget {
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-size: 10pt;
+    color: #e0e0e0; /* Light text for dark backgrounds */
+}
+
+QMainWindow {
+    background-color: #2d2d2d; /* Dark gray background */
+}
+
+QLabel {
+    color: #e0e0e0;
+    background-color: transparent;
+}
+
+/* Navigation Panel - using objectName */
+QListWidget#navPanel {
+    background-color: #353535; /* Slightly lighter dark for nav */
+    border: none;
+    border-right: 1px solid #4a4a4a;
+    padding-top: 10px;
+    outline: 0px;
+}
+
+QListWidget#navPanel::item {
+    padding: 13px 20px;
+    border-bottom: 1px solid #454545;
+    color: #c0c0c0; /* Lighter text */
+    border-left: 4px solid transparent;
+}
+
+QListWidget#navPanel::item:selected {
+    background-color: #0078d4; /* Accent blue, stands out in dark mode */
+    color: white;
+    font-weight: bold;
+    border-left: 4px solid #005a9e;
+}
+
+QListWidget#navPanel::item:hover:!selected {
+    background-color: #4f4f4f; /* Darker hover */
+    color: #e0e0e0;
+}
+
+/* Content Stack Area - using objectName */
+QStackedWidget#contentStack {
+    background-color: #252525; /* Dark content area */
+    border: none;
+}
+
+/* Buttons */
+QPushButton {
+    background-color: #0078d4; /* Re-use accent blue for buttons */
+    color: white;
+    border: none;
+    padding: 9px 16px;
+    border-radius: 4px;
+    font-size: 10pt;
+    font-weight: 500;
+}
+
+QPushButton:hover {
+    background-color: #005a9e;
+}
+
+QPushButton:pressed {
+    background-color: #004c8a;
+}
+
+QPushButton:disabled {
+    background-color: #484848;
+    color: #888888;
+}
+
+/* Input Fields */
+QLineEdit, QTextEdit, QComboBox, QDateEdit, QDateTimeEdit {
+    border: 1px solid #505050; /* Darker border */
+    padding: 7px;
+    border-radius: 4px;
+    background-color: #3d3d3d; /* Dark input background */
+    color: #e0e0e0;
+    font-size: 10pt;
+}
+
+QLineEdit:focus, QTextEdit:focus, QComboBox:focus, QDateEdit:focus, QDateTimeEdit:focus {
+    border-color: #0078d4; /* Accent color on focus */
+    /* box-shadow: 0 0 0 1px #0078d4; */
+}
+
+QComboBox::drop-down {
+    border: none;
+    background-color: transparent;
+     width: 20px;
+}
+QComboBox::down-arrow {
+    /* image: url(:/icons/chevron-down-dark.svg); */
+}
+
+/* Table Views */
+QTableWidget {
+    border: 1px solid #4a4a4a;
+    gridline-color: #4a4a4a;
+    background-color: #2d2d2d;
+    alternate-background-color: #353535;
+    selection-background-color: #0078d4;
+    selection-color: white;
+    color: #e0e0e0;
+}
+
+QHeaderView::section {
+    background-color: #353535;
+    padding: 8px;
+    border: none;
+    border-bottom: 1px solid #4a4a4a;
+    font-weight: bold;
+    color: #e0e0e0;
+}
+
+/* Calendar Widget */
+QCalendarWidget QToolButton {
+    height: 32px;
+    font-size: 9pt;
+    color: #e0e0e0;
+    background-color: #353535;
+    border: 1px solid #4a4a4a;
+    margin: 2px;
+    border-radius: 3px;
+}
+QCalendarWidget QToolButton:hover {
+    background-color: #4f4f4f;
+}
+QCalendarWidget QWidget#qt_calendar_navigationbar {
+    background-color: #353535;
+    border-bottom: 1px solid #4a4a4a;
+}
+QCalendarWidget QTableView {
+    selection-background-color: #0078d4;
+    selection-color: white;
+    background-color: #2d2d2d;
+    color: #e0e0e0;
+}
+QCalendarWidget QAbstractItemView:enabled {
+    color: #e0e0e0;
+}
+QCalendarWidget QAbstractItemView:disabled {
+    color: #888888;
+}
+
+/* Dialogs */
+QDialog {
+    background-color: #2d2d2d;
+}
+
+QDialogButtonBox QPushButton {
+    min-width: 85px;
+    padding: 8px 15px;
+}
+
+QMessageBox {
+    background-color: #2d2d2d; /* Dark background for QMessageBox */
+}
+QMessageBox QLabel { /* Ensure QLabel inside QMessageBox also gets dark theme color */
+    color: #e0e0e0;
+    background-color: transparent; /* Ensure it doesn't pick up default QLabel background if any */
+}

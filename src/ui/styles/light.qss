@@ -1,0 +1,166 @@
+/* src/ui/styles/light.qss - Light Theme */
+
+QWidget {
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-size: 10pt;
+    color: #212121; /* Default text color */
+}
+
+QMainWindow {
+    background-color: #f7f9fc; /* A very light grey, almost white */
+}
+
+QLabel {
+    color: #333333;
+    background-color: transparent;
+}
+
+/* Navigation Panel - using objectName */
+QListWidget#navPanel {
+    background-color: #eff3f7; /* Light blueish-gray for nav background */
+    border: none;
+    border-right: 1px solid #d0d7de; /* Subtle border */
+    padding-top: 10px;
+    outline: 0px; /* Remove focus outline */
+}
+
+QListWidget#navPanel::item {
+    padding: 13px 20px; /* Slightly increased padding for better touch/click */
+    border-bottom: 1px solid #dce1e6;
+    color: #2c3e50; /* Darker, more readable text */
+    border-left: 4px solid transparent; /* Placeholder for selected indicator */
+}
+
+QListWidget#navPanel::item:selected {
+    background-color: #0078d4; /* A common accent blue */
+    color: white;
+    font-weight: bold;
+    border-left: 4px solid #005a9e; /* Darker blue accent */
+}
+
+QListWidget#navPanel::item:hover:!selected {
+    background-color: #d6eaff; /* Lighter blue for hover */
+    color: #005a9e;
+}
+
+/* Content Stack Area - using objectName */
+QStackedWidget#contentStack {
+    background-color: #ffffff; /* Clean white for content */
+    border: none;
+}
+
+/* Buttons */
+QPushButton {
+    background-color: #0078d4;
+    color: white;
+    border: none; /* Flat buttons */
+    padding: 9px 16px;
+    border-radius: 4px;
+    font-size: 10pt;
+    font-weight: 500; /* Medium weight for button text */
+}
+
+QPushButton:hover {
+    background-color: #005a9e; /* Darker on hover */
+}
+
+QPushButton:pressed {
+    background-color: #004c8a; /* Even darker when pressed */
+}
+
+QPushButton:disabled {
+    background-color: #e0e0e0;
+    color: #a0a0a0;
+}
+
+/* Input Fields */
+QLineEdit, QTextEdit, QComboBox, QDateEdit, QDateTimeEdit {
+    border: 1px solid #cccccc; /* Standard border */
+    padding: 7px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    color: #2c3e50;
+    font-size: 10pt;
+}
+
+QLineEdit:focus, QTextEdit:focus, QComboBox:focus, QDateEdit:focus, QDateTimeEdit:focus {
+    border-color: #0078d4; /* Accent color on focus */
+    /* box-shadow: 0 0 0 1px #0078d4; Consider if possible with Qt */
+}
+
+QComboBox::drop-down {
+    border: none;
+    background-color: transparent;
+    width: 20px;
+}
+QComboBox::down-arrow {
+    /* Consider using a theme icon or SVG for a modern look */
+    /* image: url(:/icons/chevron-down-light.svg); */
+    /* For simplicity, using a character if no icon */
+     /* No explicit arrow, rely on native or remove for cleaner look */
+}
+
+
+/* Table Views */
+QTableWidget {
+    border: 1px solid #e0e0e0;
+    gridline-color: #e0e0e0;
+    background-color: #ffffff;
+    alternate-background-color: #f7f9fc;
+    selection-background-color: #0078d4;
+    selection-color: white;
+}
+
+QHeaderView::section {
+    background-color: #eff3f7;
+    padding: 8px;
+    border: none;
+    border-bottom: 1px solid #d0d7de;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+/* Calendar Widget */
+QCalendarWidget QToolButton {
+    height: 32px;
+    font-size: 9pt;
+    color: #2c3e50;
+    background-color: #eff3f7;
+    border: 1px solid #d0d7de;
+    margin: 2px;
+    border-radius: 3px;
+}
+QCalendarWidget QToolButton:hover {
+    background-color: #d6eaff;
+}
+QCalendarWidget QWidget#qt_calendar_navigationbar {
+    background-color: #eff3f7;
+    border-bottom: 1px solid #d0d7de;
+}
+QCalendarWidget QTableView {
+    selection-background-color: #0078d4;
+    selection-color: white;
+}
+QCalendarWidget QAbstractItemView:enabled {
+    color: #2c3e50;
+}
+QCalendarWidget QAbstractItemView:disabled {
+    color: #a0a0a0;
+}
+
+/* Dialogs */
+QDialog {
+    background-color: #ffffff;
+}
+
+QDialogButtonBox QPushButton {
+    min-width: 85px;
+    padding: 8px 15px; /* Slightly less padding for dialog buttons */
+}
+
+QMessageBox {
+    background-color: #ffffff;
+}
+QMessageBox QLabel { /* Ensure QMessageBox text color is consistent */
+    color: #333333;
+}
