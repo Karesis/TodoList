@@ -117,7 +117,7 @@ time\_management\_app/
 │   └── task\_view.py
 └── widgets/
 
-```
+````
 
 ## Contributing
 
