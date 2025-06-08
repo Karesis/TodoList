@@ -1,0 +1,9 @@
+include LICENSE
+include README.md
+
+# 包含 todo 包里面的 schema.sql 文件
+include todo/schema.sql
+
+# 如果未来有其他资源，可以这样写：
+# 递归地包含 ui/assets 文件夹下的所有 .png 图片
+# recursive-include todo/ui/assets *.png
